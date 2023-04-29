@@ -21,6 +21,7 @@ dependencies {
 	implementation 'org.webjars:jquery:3.1.1-1'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	compileOnly 'org.projectlombok:lombok'
+	annotationProcessor 'org.projectlombok:lombok'
 }
 
 test {

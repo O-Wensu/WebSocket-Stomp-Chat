@@ -1,5 +1,6 @@
 package com.example.messagingstompwebsocket;
 
+import lombok.RequiredArgsConstructor;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.SendTo;
 
@@ -8,13 +9,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.util.HtmlUtils;
 
 @Controller
+@RequiredArgsConstructor
 public class GreetingController {
 
-	private SimpMessagingTemplate msgOperation;
-
-	public GreetingController(SimpMessagingTemplate msgOperation) {
-		this.msgOperation = msgOperation;
-	}
+	private final SimpMessagingTemplate msgOperation;
 
 	@MessageMapping("/hello")
 	@SendTo("/topic/greetings")
