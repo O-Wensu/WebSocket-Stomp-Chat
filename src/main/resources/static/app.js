@@ -21,9 +21,34 @@ function connect() {
     });
 }
 
-function sendName() {
-    stompClient.send("/app/hello", {}, JSON.stringify(
-        {'message': $("#my-message").val(), 'roomId' : $("#room").val()}));
+function enterChatRoom() {
+    var roomId = $("#connectRoomId").val();
+
+    stompClient.subscribe('/sub/chat/room' + roomId, function (message){
+        showGreeting("Sender : " + JSON.parse(message.body).sender + "</br>" +
+                    "Message : " + JSON.parse(message.body).message)});
+
+    stompClient.send("/pub/chat/enter", {}, JSON.stringify(
+        { 'type' : "ENTER",
+            'sender' : $("#my-name").val(),
+            'roomId' : $("#connectRoomId").val(),
+            'message': ""}));
+}
+
+function sendMessage() {
+    stompClient.send("/pub/chat/send", {}, JSON.stringify(
+        { 'type' : "TALK",
+            'sender' : $("#my-name").val(),
+            'roomId' : $("#connectRoomId").val(),
+            'message': $("#my-message").val()}));
+}
+
+function leaveChatRoom() {
+    if (stompClient !== null) {
+        stompClient.disconnect();
+    }
+    setConnected(false);
+    console.log("Disconnected");
 }
 
 function showGreeting(message) {

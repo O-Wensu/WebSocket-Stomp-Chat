@@ -18,9 +18,10 @@
         <div class="col-md-6">
             <form class="form-inline">
                 <div class="form-group">
-                    <label for="room">Room number to join</label>
+                    <label for="connectRoomId">RoomId to Join</label>
                     <input type="text" id="connectRoomId" class="form-control" placeholder="input room number...">
-                    <label for="connect">WebSocket connection:</label>
+                    <label for="my-name">What is ur name?</label>
+                    <input type="text" id="my-name" class="form-control" placeholder="input name..."><label for="connect">WebSocket connection:</label>
                     <button id="connect" class="btn btn-default" type="submit">Connect</button>
 <!--                    <button id="disconnect" class="btn btn-default" type="submit" disabled="disabled">Disconnect-->
 <!--                    </button>-->
@@ -34,10 +35,12 @@
                 <div class="form-group">
                     <label for="my-message">Message to Send</label>
                     <input type="text" id="my-message" class="form-control" placeholder="input message...">
-                    <label for="room">Room number to Send</label>
-                    <input type="text" id="room" class="form-control" placeholder="input room number...">
+                    <button id="send" class="btn btn-default" type="submit">Send</button>
                 </div>
-                <button id="send" class="btn btn-default" type="submit">Send</button>
+                <div>
+                    <label for="leave">Exit</label>
+                    <button id="leave" class="btn btn-default" type="submit">Exit Room</button>
+                </div>
             </form>
         </div>
     </div>
