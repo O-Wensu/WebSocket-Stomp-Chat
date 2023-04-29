@@ -1,4 +1,4 @@
-package com.example.messagingstompwebsocket;
+package com.example.messagingstompwebsocket.dto;
 
 import lombok.AccessLevel;
 import lombok.Getter;
